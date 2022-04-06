@@ -1,7 +1,6 @@
 const areArrays = function (entity1, entity2) {
   const isArray = Array.isArray;
-  return isArray(entity1) && isArray(entity2)
-
+  return isArray(entity1) && isArray(entity2);
 };
 
 const isEqual = function (lhs, rhs) {
