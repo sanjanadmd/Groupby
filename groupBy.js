@@ -1,5 +1,11 @@
-const areEqual = function (lhs, rhs) {
-  if (!Array.isArray(lhs) || !Array.isArray(rhs)) {
+const areArrays = function (entity1, entity2) {
+  const isArray = Array.isArray;
+  return isArray(entity1) && isArray(entity2)
+
+};
+
+const isEqual = function (lhs, rhs) {
+  if (!areArrays(lhs, rhs)) {
     return lhs === rhs;
   }
 
@@ -8,17 +14,16 @@ const areEqual = function (lhs, rhs) {
   }
 
   for (let index = 0; index < rhs.length; index++) {
-    if (!areEqual(lhs[index], rhs[index])) {
+    if (!isEqual(lhs[index], rhs[index])) {
       return false;
     }
   }
   return true;
 };
 
-const groupBy = function (element, groupedElements) {
-  const groups = groupedElements.slice(0);
+const groupBy = function (element, groups) {
   for (let index = 0; index < groups.length; index++) {
-    if (areEqual(element, groups[index][0])) {
+    if (isEqual(element, groups[index][0])) {
       groups[index].push(element);
       return groups;
     }
@@ -28,9 +33,9 @@ const groupBy = function (element, groupedElements) {
 };
 
 const groupElements = function (batch) {
-  let groups = [];
+  const groups = [];
   for (let index = 0; index < batch.length; index++) {
-    groups = groupBy(batch[index], groups);
+    groupBy(batch[index], groups);
   }
   return groups;
 };
