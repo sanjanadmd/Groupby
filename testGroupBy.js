@@ -7,6 +7,7 @@ const testGroupElements = function (array, expectedGroups, description) {
 };
 
 const groupElementsTests = function () {
+  testGroupElements([], [], 'Empty array');
   testGroupElements([1], [[1]], 'Single element');
   testGroupElements([1, 3], [[1], [3]], 'Two different elements');
   testGroupElements([1, 2, 1], [[1, 1], [2]], 'Two same and one differen element');
