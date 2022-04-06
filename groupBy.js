@@ -1,22 +1,18 @@
-const areArraysEqual = function (array1, array2) {
-  if (!Array.isArray(array1) || !Array.isArray(array2)) {
+const areEqual = function (lhs, rhs) {
+  if (!Array.isArray(lhs) || !Array.isArray(rhs)) {
+    return lhs === rhs;
+  }
+
+  if (lhs.length !== rhs.length) {
     return false;
   }
 
-  if (array1.length !== array2.length) {
-    return false;
-  }
-
-  for (let index = 0; index < array2.length; index++) {
-    if (!areEqual(array1[index], array2[index])) {
+  for (let index = 0; index < rhs.length; index++) {
+    if (!areEqual(lhs[index], rhs[index])) {
       return false;
     }
   }
   return true;
-};
-
-const areEqual = function (argument1, argument2) {
-  return areArraysEqual(argument1, argument2) || argument1 === argument2;
 };
 
 const groupBy = function (element, groupedElements) {
