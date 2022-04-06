@@ -11,10 +11,10 @@ const groupBy = function (element, groups) {
   return groups;
 };
 
-const groupElements = function (batch) {
+const groupElements = function (list) {
   const groups = [];
-  for (let index = 0; index < batch.length; index++) {
-    groupBy(batch[index], groups);
+  for (let index = 0; index < list.length; index++) {
+    groupBy(list[index], groups);
   }
   return groups;
 };
