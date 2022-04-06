@@ -1,4 +1,4 @@
-const groupElements = require('./groupBy.js').groupElements;
+const groupElements = require('../src/groupBy.js').groupElements;
 const assert = require('./assert.js').assert;
 
 const testGroupElements = function (array, expectedGroups, description) {

@@ -1,4 +1,4 @@
-const isEqual = require('./isEqual.js').isEqual;
+const isEqual = require('../src/isEqual.js').isEqual;
 
 const testIsEqual = function (lhs, rhs, expected, description) {
   const status = isEqual(lhs, rhs) === expected ? '✅' : '❌';
