@@ -1,37 +1,42 @@
-const areArraysEqual = function (arr1, arr2) {
-  if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
+const areArraysEqual = function (array1, array2) {
+  if (!Array.isArray(array1) || !Array.isArray(array2)) {
     return false;
   }
 
-  if (arr1.length !== arr2.length) {
+  if (array1.length !== array2.length) {
     return false;
   }
 
-  for (let index = 0; index < arr2.length; index++) {
-    if (!areEqual(arr1[index], arr2[index])) {
+  for (let index = 0; index < array2.length; index++) {
+    if (!areEqual(array1[index], array2[index])) {
       return false;
     }
   }
   return true;
 };
 
-const areEqual = function (lhs, rhs) {
-  return areArraysEqual(lhs, rhs) || (lhs === rhs);
+const areEqual = function (argument1, argument2) {
+  return areArraysEqual(argument1, argument2) || argument1 === argument2;
+};
+
+const groupBy = function (element, groupedElements) {
+  const groups = groupedElements.slice(0);
+  for (let index = 0; index < groups.length; index++) {
+    if (areEqual(element, groups[index][0])) {
+      groups[index].push(element);
+      return groups;
+    }
+  }
+  groups.push([element]);
+  return groups;
 };
 
 const groupElements = function (batch) {
-  if (batch.length < 1) {
-    return [];
-  }
-  const newArray = [];
-  const group = [];
+  let groups = [];
   for (let index = 0; index < batch.length; index++) {
-    const location = areEqual(batch[0], batch[index]) ? group : newArray;
-    location.push(batch[index]);
+    groups = groupBy(batch[index], groups);
   }
-  const groupedElements = groupElements(newArray);
-  groupedElements.unshift(group);
-  return groupedElements;
+  return groups;
 };
 
 console.log(groupElements([1]));
