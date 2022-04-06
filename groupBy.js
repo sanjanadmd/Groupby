@@ -19,9 +19,4 @@ const groupElements = function (batch) {
   return groups;
 };
 
-console.log(groupElements([1]));
-console.log(groupElements([1, 3]));
-console.log(groupElements([1, 2, 1]));
-console.log(groupElements([1, 2, 3, 1, 2, 4]));
-console.log(groupElements([[1, 1], 1, [1, 1], 1]));
-console.log(groupElements([[1, [1, 1]], 1, [1, [1, 1]], 1]));
+exports.groupElements = groupElements;
